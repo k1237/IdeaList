@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+/*追加後 npm run build 省略方法検索*/
+.btn{
+    @apply font-semibold text-white py-2 px-6 rounded;
+}
+@tailwind utilities;

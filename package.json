@@ -1,0 +1,22 @@
+{
+  "name": "memolist",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build": "tailwind build css/style.css -o public/css/style.css"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.2.17",
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "vite": "^1.0.0-rc.13"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
