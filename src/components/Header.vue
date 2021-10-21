@@ -6,7 +6,6 @@
                     shadow-lg">ログイン</button>
                     
      </div>
-
      <h1 class="text-5xl 
               text-blue-700 
               text-center 

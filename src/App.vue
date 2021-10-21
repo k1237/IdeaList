@@ -1,13 +1,19 @@
 <template>
+
    <div class="wrapper">
       <Header/>
-      <Nav/>
+      <Nav />      
    </div>
 
-   <div class="wrapper text-center mb-16">
-   <Idea  v-for="n in loop" 
-          v-bind:key="n"/>
+   <div class="wrapper text-center mb-16"> 
+       <router-view v-for="n in loop" 
+                    v-bind:key="n" 
+                    name="idea"></router-view>
+       <router-view name="schedule"></router-view>
+       <router-view name="excuted"></router-view>
+       <router-view name="memo"></router-view>
    </div>
+
 
 </template>
 
@@ -23,20 +29,22 @@
 <script>
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
-import Idea from './components/Idea.vue'
+
 
 export default {
   name: 'App',
   components: {
     Header,
     Nav,
-    Idea
   },
 
   data() {
     return {
-         loop:7,//アイデアフォーム繰り返し回数
+       loop:10,
     };
   },
+
+  methods:{
+  }
 }
 </script>
