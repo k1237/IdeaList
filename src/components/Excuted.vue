@@ -1,6 +1,22 @@
 <template> 
         <div class="wrapper text-center mb-16">
-         <h1>ここに実行完了アイデアを表示</h1>
+         <input
+            class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-4"
+            type="text"
+            placeholder="ここに実行済アイデアを表示"
+            />
+
+               <a
+             href=""
+             class="
+             btn
+             text-red-500
+             ml-4
+             px-3
+             border-2 border-red-500
+             hover:bg-red-200
+             "
+            ><i class="fas fa-trash-alt"></i></a>
          </div>
 </template>
 

@@ -7,9 +7,7 @@
       v-model="idea"
     />
 
-    <a
-      href=""
-      class="
+    <a  class="
         btn
         text-red-500
         ml-4
@@ -17,6 +15,7 @@
         border-2 border-red-300
         hover:bg-pink-300
       "
+      @click="submit_idea"
       ><i class="fas fa-heart"></i
     ></a>
   </div>
@@ -27,12 +26,22 @@
 export default {
   name: "Idea",
 
-  props: {},
-
+  props: {
+   
+  },
+  
   data() {
     return {
       idea: "",
     };
   },
+
+
+  methods:{
+    submit_idea(){
+      this.$emit("form-event", this.idea);
+    }
+  },
+
 };
 </script>
