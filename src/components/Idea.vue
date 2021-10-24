@@ -29,18 +29,31 @@ export default {
   props: {
    
   },
+
   
   data() {
     return {
       idea: "",
     };
   },
+  
+  mounted(){
+    if(localStorage.name){
+        this.idea = localStorage.name;
+    }
+  },
 
+  watch:{
+     idea(newName){
+       localStorage.name = newName;
+     }
+  },
+  
 
   methods:{
     submit_idea(){
       this.$emit("form-event", this.idea);
-    }
+    },
   },
 
 };

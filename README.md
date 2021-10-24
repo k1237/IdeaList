@@ -84,3 +84,9 @@ Vue機能メモ
   mutationの呼び出し⇨commit
   actionsの呼び出し⇨dispatch
 ※オブジェクトの引数に関してはp364
+
+
+・@change="onChanges"　入力完了後にイベント発生
+onChanges(){
+      this.$emit("local-event", this.idea);
+}
