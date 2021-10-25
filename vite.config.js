@@ -1,5 +1,5 @@
 module.exports = {
-  base:'./',
+  base:'/IdeaList/',
   assetsDir:'./',
   outDir: 'docs',
   }
