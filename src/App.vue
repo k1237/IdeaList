@@ -8,7 +8,6 @@
     <router-view
       v-for="n in loop"
       v-on:form-event="formAction"
-      v-on:local-event="localAction"
       v-bind:key="n"
       name="idea"
     ></router-view>
@@ -39,6 +38,7 @@
 <script>
 import Header from "./components/Header.vue";
 import Nav from "./components/Nav.vue";
+
 export default {
   name: "App",
   components: {
@@ -48,7 +48,8 @@ export default {
   data() {
     return {
       loop:1,
-      idea_ar: [], //実行予定用配列
+      idea_ar: [], //実行予定配列
+      idea_excuted:[]//実行済配列
       // Allidea : [...Array(10)].map((_, i) => ({ id: i-1 + 1 ,txt:''})),
     };
   },
@@ -65,10 +66,6 @@ export default {
   methods: {
     formAction(idea) {
       this.idea_ar.push(idea);
-    },
-
-    localAction(idea){
-        this.localidea = idea;
     },
 
     DeleteAction(){

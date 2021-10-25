@@ -4,12 +4,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tailwind build css/style.css -o public/css/style.css",
-    "deploy": "gh-pages -d dist"   
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "lottie-web": "^5.7.14",
     "tailwindcss": "^2.2.17",
     "vue": "^3.0.4",
     "vue-router": "^4.0.12",
+    "vue-star": "^0.0.4",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
   },

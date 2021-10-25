@@ -7,7 +7,6 @@
          {{idea_txt}}</h1>
 
     <a
-      href=""
       class="
         btn
         text-green-500
@@ -17,9 +16,13 @@
         h-10
         border-2 border-green-500
         hover:bg-green-200
+        cursor-pointer
       "
-      ><i class="fas fa-check"></i
-    ></a>
+      @click="submit_sche"
+      >
+       <transition>
+         <i v-if="show" class="fas fa-check"></i>
+       </transition></a>
 
     <a
       href=""
@@ -40,6 +43,26 @@
   </div>
 </template>
 
+<style scoped>
+.v-enter-active {
+  animation: bounce-in .5s;
+}
+.v-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
+
 <script>
 export default {
   name: "Schedule",
@@ -48,8 +71,21 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      show:true,
+    };
+    
   },
+
+  methods:{
+    submit_sche(){
+          this.show=false,//ここをfalse⇨trueにすると値が残る
+          setTimeout(() => {
+          this.show = true
+          }
+          ,50);
+    },
+  }
   
 };
 
