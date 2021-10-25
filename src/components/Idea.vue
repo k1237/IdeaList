@@ -45,10 +45,6 @@ export default {
     localidea: String,
   },
 
-<<<<<<< HEAD
-=======
-  
->>>>>>> b3b30806cca7f4ca18a9c9c9fcc0f1714ec4a618
   data() {
     return {
       idea: "",
@@ -61,24 +57,11 @@ export default {
     }
   },
 
-<<<<<<< HEAD
   mounted() {
     if (localStorage.name) {
       this.idea = localStorage.name;
     }
-=======
-  watch:{
-     idea(newName){
-       localStorage.name = newName;
-     }
-  },
-  
 
-  methods:{
-    submit_idea(){
-      this.$emit("form-event", this.idea);
-    },
->>>>>>> b3b30806cca7f4ca18a9c9c9fcc0f1714ec4a618
   },
 
   watch: {
