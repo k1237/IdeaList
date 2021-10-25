@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import createPersistedState from "vuex-persistedstate"
+// import createPersistedState from "vuex-persistedstate"
 
 export const store = createStore({
     state: () => {//共通データ保存
@@ -37,6 +37,6 @@ export const store = createStore({
     },
 
     plugins: [//プラグイン
-        createPersistedState(),//ローカルストレージ
+        // createPersistedState(),//ローカルストレージ
     ],
 })
