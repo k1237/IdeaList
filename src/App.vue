@@ -14,10 +14,11 @@
 
     <router-view
       name="schedule"
-      v-for="idea in idea_ar"
-      v-bind:key="idea"
+      v-for="(idea,index) in idea_ar" 
+      v-bind:key="index"
       v-bind:idea_txt="idea"
-      @delete-click="DeleteAction"
+      v-bind:number="index"
+      v-on:delete-event="DeleteAction"
     ></router-view>
 
     <router-view name="excuted"></router-view>
@@ -47,10 +48,9 @@ export default {
   },
   data() {
     return {
-      loop:1,
-      idea_ar: [], //実行予定配列
+      loop:3,
+      idea_ar:[], //実行予定配列
       idea_excuted:[]//実行済配列
-      // Allidea : [...Array(10)].map((_, i) => ({ id: i-1 + 1 ,txt:''})),
     };
   },
 
@@ -68,8 +68,13 @@ export default {
       this.idea_ar.push(idea);
     },
 
-    DeleteAction(){
-      localStorage.removeItem("idea_ar");
+    DeleteAction(number){
+    const S_IDEA = JSON.parse(localStorage.getItem('idea_ar'));
+      if (S_IDEA) {
+      S_IDEA.splice(number,1);
+      localStorage.setItem("idea_ar", JSON.stringify(S_IDEA));
+    }
+      // localStorage.removeItem("idea_ar");
       window.location.reload();
     }
 

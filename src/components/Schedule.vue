@@ -36,7 +36,7 @@
         border-2 border-red-500
         hover:bg-red-200
       "
-      @click="$emit('delete-click')"
+      @click="sche_delete"
       ><i class="fas fa-trash-alt"></i
     ></a>
     </div>
@@ -68,6 +68,7 @@ export default {
   name: "Schedule",
   props: {
     idea_txt:String,
+    number:Number
   },
 
   data() {
@@ -85,6 +86,10 @@ export default {
           }
           ,50);
     },
+
+    sche_delete(){
+      this.$emit("delete-event", this.number);
+    }
   }
   
 };

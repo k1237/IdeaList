@@ -98,24 +98,29 @@ export default {
   },
   
   mounted(){
-    if(localStorage.name){
-        this.idea = localStorage.name;
+  const IDEA = localStorage.getItem("idea");
+    if (IDEA) {
+      this.idea = JSON.parse(IDEA);
     }
   },
 
   watch: {
-    idea(newName) {
-      localStorage.name = newName;
-    },
+     idea: {
+      handler: function (next) {
+        localStorage.setItem("idea", JSON.stringify(next));
+      },
+      deep: true,
+    }
   },
 
   methods: {
     submit_idea() {
           this.show=false,//ここをfalse⇨trueにすると値が残る
           this.$emit("form-event", this.idea)
+
           setTimeout(() => {
-          this.show = true}
-          ,50
+          this.show = true
+          },50
         )
     },
 
