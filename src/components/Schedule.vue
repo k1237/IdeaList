@@ -25,7 +25,6 @@
        </transition></a>
 
     <a
-      href=""
       class="
         btn
         text-red-500
@@ -35,6 +34,7 @@
         h-10
         border-2 border-red-500
         hover:bg-red-200
+        cursor-pointer
       "
       @click="sche_delete"
       ><i class="fas fa-trash-alt"></i

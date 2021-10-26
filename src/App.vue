@@ -6,15 +6,18 @@
 
   <div class="wrapper text-center mb-16">
     <router-view
-      v-for="n in loop"
+      v-for="(idea,index) in idea_ar"
       v-on:form-event="formAction"
-      v-bind:key="n"
+      v-on:change-event="changeAction"
+      v-bind:key="index"
+      v-bind:Idea="idea"
+      v-bind:number="index"
       name="idea"
     ></router-view>
 
     <router-view
       name="schedule"
-      v-for="(idea,index) in idea_ar" 
+      v-for="(idea,index) in idea_sche" 
       v-bind:key="index"
       v-bind:idea_txt="idea"
       v-bind:number="index"
@@ -48,43 +51,60 @@ export default {
   },
   data() {
     return {
-      loop:3,
-      idea_ar:[], //実行予定配列
+      idea_ar:Array(10).fill(''),//アイデア用配列
+      idea_sche:[], //実行予定配列
       idea_excuted:[]//実行済配列
     };
   },
 
   watch: {
-     idea_ar: {
+    idea_ar: {//アイデア帳配列を監視LSに保存
       handler: function (next) {
         localStorage.setItem("idea_ar", JSON.stringify(next));
+      },
+      deep: true,
+    },
+     
+    idea_sche: {//実行予定配列を監視LSに保存
+      handler: function (next) {
+        localStorage.setItem("idea_sche", JSON.stringify(next));
       },
       deep: true,
     }
   },
 
   methods: {
-    formAction(idea) {
-      this.idea_ar.push(idea);
+
+    changeAction(number,idea){//アイデア帳値を配列に保存
+      this.idea_ar[number] = idea;
     },
 
-    DeleteAction(number){
-    const S_IDEA = JSON.parse(localStorage.getItem('idea_ar'));
-      if (S_IDEA) {
+    formAction(idea) {//実行予定値を配列に格納
+      this.idea_sche.push(idea);
+    },
+
+    DeleteAction(number){//該当実行予定値削除
+    const S_IDEA = JSON.parse(localStorage.getItem('idea_sche'));
+    if (S_IDEA) {
       S_IDEA.splice(number,1);
-      localStorage.setItem("idea_ar", JSON.stringify(S_IDEA));
+      localStorage.setItem("idea_sche", JSON.stringify(S_IDEA));
     }
-      // localStorage.removeItem("idea_ar");
+    // localStorage.removeItem("idea_sche");
       window.location.reload();
     }
 
   },
 
-  created: function () {
-   const S_IDEA = localStorage.getItem("idea_ar");
-    if (S_IDEA) {
-      this.idea_ar = JSON.parse(S_IDEA);
-    }
+  created: function () {//各LSの値を復元
+    const IDEA = localStorage.getItem("idea_ar");
+    if (IDEA) {
+      this.idea_ar= JSON.parse(IDEA);
+     }
+
+    const S_IDEA = localStorage.getItem("idea_sche");
+     if (S_IDEA) {
+      this.idea_sche= JSON.parse(S_IDEA);
+     }
   },
 };
 </script>

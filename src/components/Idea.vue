@@ -6,9 +6,9 @@
       placeholder="ここにアイデアを記入"
       @change="onChanges"
       v-model="idea"
-    />
-    
-  
+      v-bind:value="idea"
+    />{{Idea}}
+
     <a
       class="
         btn
@@ -90,6 +90,11 @@ export default {
   
   name: "Idea",
 
+  props:{
+    Idea:String,
+    number:Number,
+  },
+
   data() {
     return {
       idea: "",
@@ -98,19 +103,11 @@ export default {
   },
   
   mounted(){
-  const IDEA = localStorage.getItem("idea");
-    if (IDEA) {
-      this.idea = JSON.parse(IDEA);
-    }
+     
   },
 
   watch: {
-     idea: {
-      handler: function (next) {
-        localStorage.setItem("idea", JSON.stringify(next));
-      },
-      deep: true,
-    }
+    
   },
 
   methods: {
@@ -125,7 +122,7 @@ export default {
     },
 
     onChanges() {//複数のフォームの値をストレージに保存するには？
-      // this.$emit("local-event", this.idea);
+         this.$emit("change-event",this.number,this.idea)
     },
   },
 };
