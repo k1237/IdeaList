@@ -12,15 +12,15 @@
               font-bold
               ">IdeaList</h1>
 
-    <p>{{$store.state.message}}</p>
-    
+
     <!--Vuexの練習-->
-    <p>mutationTEST</p>
+     <!-- <p>{{$store.state.message}}</p> -->
+    <!-- <p>mutationTEST</p>
     <input type="submit" name="" id="" class="bg-indigo-700 btn"
             value="COUNT" @click="$store.commit('doit')" />
             <input type="submit" name="" id="" class="bg-indigo-700 btn"
             value="Reset" @click="$store.commit('reset')" />
-            <p>{{$store.state.counter}}</p>
+            <p>{{$store.state.counter}}</p> -->
 
 </template>
 

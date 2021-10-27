@@ -1,12 +1,19 @@
 <template>
    <div class="wrapper text-center" >
       <div class="flex justify-evenly">
-         <h1  class="border-blue-800 
+      <!--変更可能にしてLSに保存するならここを修正-->
+         <!-- <input
+         class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-4"
+         type="text"
+         @change="onChanges"
+         v-model="idea_txt"
+        /> -->
+      <h1  class="border-blue-800 
               border-2 w-4/5 h-12 
               rounded-md my-4 leading-10">
-         {{idea_txt}}</h1>
+      {{idea_txt}}</h1>
 
-    <a
+      <a
       class="
         btn
         text-green-500
@@ -85,6 +92,8 @@ export default {
           this.show = true
           }
           ,50);
+    this.$emit("check-event", this.idea_txt);
+    this.$emit("delete-event", this.number);
     },
 
     sche_delete(){

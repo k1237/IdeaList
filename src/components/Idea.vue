@@ -3,14 +3,11 @@
     <input
       class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-4"
       type="text"
-      placeholder="ここにアイデアを記入"
       @change="onChanges"
       v-model="idea"
-      v-bind:value="idea"
-    />{{Idea}}
+    />
 
-    <a
-      class="
+    <a class="
         btn
         text-yellow-500
         ml-4
@@ -18,7 +15,6 @@
         border-2 border-yellow-500
         hover:bg-yellow-300
         cursor-pointer
-      
       "
       @click="submit_idea"
       > 
@@ -39,6 +35,7 @@
         border-2 border-red-500
         hover:bg-red-200
       "
+      @click="Delete_Idea"
       ><i class="fas fa-trash-alt" ></i
     ></a>
   </div>
@@ -91,23 +88,24 @@ export default {
   name: "Idea",
 
   props:{
-    Idea:String,
+    Idea:String,//LSに保存した入力値
     number:Number,
   },
 
   data() {
     return {
       idea: "",
-      show:true,
+      show:true,//アニメーションフラグ
     };
   },
+
   
   mounted(){
-     
+      this.idea = this.Idea //LSの値をv-modelに代入
   },
 
   watch: {
-    
+       
   },
 
   methods: {
@@ -119,6 +117,10 @@ export default {
           this.show = true
           },50
         )
+    },
+
+    Delete_Idea(){
+        this.$emit("del-event",this.number,this.idea)
     },
 
     onChanges() {//複数のフォームの値をストレージに保存するには？
