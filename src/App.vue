@@ -1,10 +1,11 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" >
     <Header />
     <Nav />
   </div>
+  
 
-  <div class="wrapper text-center mb-16">
+  <div class="wrapper text-center mb-16"  >
     <router-view name="memo"></router-view>
 
     <router-view
@@ -36,16 +37,37 @@
        v-bind:number="index"
        v-on:excuted-delete="ExdeleteAction"
     ></router-view>
-
   </div>
+
 </template>
 
 <style>
 .wrapper {
-  width: 85%;
+  width: 70%;
   margin: 0 auto;
   background-color: white;
   border-radius: 10px;
+}
+
+/*フェードイン*/
+.v-enter-active{
+  animation:opacity 0.75s;
+}
+
+.v-leave-active{
+  animation:opacity 0.75s reverse;
+}
+
+@keyframes opacity {
+  0% {
+    opacity:0;
+  }
+  50% {
+    opacity:0.5;
+  }
+  100% {
+    opacity:1;
+  }
 }
 </style>
 
@@ -117,7 +139,7 @@ export default {
       S_IDEA.splice(number,1);
       localStorage.setItem("idea_sche", JSON.stringify(S_IDEA));
     }
-      window.location.reload();
+      window.location.reload();//更新時の白紙を消したい
     },
 
     ExdeleteAction(number){//完了済値削除
@@ -126,7 +148,7 @@ export default {
       E_IDEA.splice(number,1);
       localStorage.setItem("idea_excuted", JSON.stringify(E_IDEA));
     }
-      window.location.reload();
+      window.location.reload();//更新時の白紙を消したい
     },
   },
 
@@ -147,5 +169,9 @@ export default {
       this.idea_excuted= JSON.parse(EXCUTED);
     }
   },
+
+  mounted(){
+
+  }
 };
 </script>
