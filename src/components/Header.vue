@@ -8,13 +8,13 @@
    
      </div>
 
-     
-
      <h1 class="text-5xl 
               text-blue-700 
               text-center 
               font-bold
               ">IdeaList</h1>
+
+    <p>※ローカルストレージ版</p>
 
 
 
