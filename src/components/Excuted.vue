@@ -1,5 +1,5 @@
 <template> 
-       <div class="wrapper text-center" >
+<div class="wrapper">
         <div class="flex justify-evenly">
         <!--変更可能にしてLSに保存するならここを修正-->
          <!-- <input
@@ -9,14 +9,14 @@
          v-model="idea_txt"
         /> -->
         <h1  class="border-blue-800 
-              border-2 w-4/5 h-12 
+              border-2 w-11/12 h-12 
               rounded-md my-4 leading-10">
         {{Excuted}}</h1>
 
          <a class="
             btn
             text-red-500
-            ml-4
+            ml-2
             mt-5
             px-3
             h-10
@@ -27,7 +27,7 @@
           @click="excuted_delete"
          ><i class="fas fa-trash-alt"></i></a>
          </div>
-         </div>
+  </div>
 </template>
 
 <script>

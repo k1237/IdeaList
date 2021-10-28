@@ -24,7 +24,6 @@
       </a>
 
     <a
-      href=""
       class="
         btn
         text-red-500
@@ -99,20 +98,21 @@ export default {
     };
   },
 
-  
+  watch: {//アイデア欄の削除ボタン
+      Idea:function(newIdea){
+        this.idea = newIdea;
+      }
+  },
+
   mounted(){
       this.idea = this.Idea //LSの値をv-modelに代入
   },
 
-  watch: {
-       
-  },
 
   methods: {
     submit_idea() {
           this.show=false,//ここをfalse⇨trueにすると値が残る
           this.$emit("form-event", this.idea)
-
           setTimeout(() => {
           this.show = true
           },50
@@ -120,7 +120,7 @@ export default {
     },
 
     Delete_Idea(){
-        this.$emit("del-event",this.number,this.idea)
+        this.$emit("del-event",this.number)
     },
 
     onChanges() {//複数のフォームの値をストレージに保存するには？
