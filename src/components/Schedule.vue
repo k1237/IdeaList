@@ -1,5 +1,6 @@
 <template>
-<div class="wrapper">
+
+<div class="wrapper list-complete-item">
       <div class="flex justify-evenly">
       <!--変更可能にしてLSに保存するならここを修正-->
          <!-- <input
@@ -13,7 +14,7 @@
               rounded-md my-4 leading-10">
       {{idea_txt}}</h1>
 
-      <a
+      <button
       class="
         btn
         text-green-500
@@ -29,9 +30,9 @@
       >
        <transition>
          <i v-if="show" class="fas fa-check"></i>
-       </transition></a>
+       </transition></button>
 
-    <a
+    <button
       class="
         btn
         text-red-500
@@ -45,9 +46,9 @@
       "
       @click="sche_delete"
       ><i class="fas fa-trash-alt"></i
-    ></a>
+    ></button>
     </div>
-    </div>
+</div>
 </template>
 
 <style scoped>
@@ -62,12 +63,26 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(3);
+    transform: scale(2.5);
   }
   100% {
     transform: scale(1);
   }
 }
+
+/*Move*/
+.list-complete-item{
+  transition: all 1s;
+  display: inline-block;
+}
+.list-complete-enter, .list-complete-leave-to{
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-complete-leave-active {
+  position: absolute;
+}
+
 </style>
 
 <script>
@@ -88,12 +103,17 @@ export default {
   methods:{
     submit_sche(){
           this.show=false,//ここをfalse⇨trueにすると値が残る
+
           setTimeout(() => {
           this.show = true
           }
           ,50);
-    this.$emit("check-event", this.idea_txt);
-    this.$emit("delete-event", this.number);
+
+          setTimeout(() => {
+          this.$emit("check-event", this.idea_txt);
+          this.$emit("delete-event", this.number);
+          }
+          ,500);
     },
 
     sche_delete(){

@@ -1,6 +1,7 @@
+import { defineConfig } from 'vite'
 
-module.exports = {
+export default defineConfig({
   base:'/IdeaList/',
   // assetsDir:'./',
   // outDir: 'docs',
-}
+})

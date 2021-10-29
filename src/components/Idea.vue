@@ -1,33 +1,33 @@
 <template >
-  <div>
     <input
-      class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-4"
+      class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-2"
       type="text"
       @change="onChanges"
       v-model="idea"
     />
-
-    <a class="
+    
+    <button class="
         btn
         text-yellow-500
-        ml-4
+        ml-3
         px-3
         border-2 border-yellow-500
         hover:bg-yellow-300
         cursor-pointer
       "
+      v-bind:disabled="!canStar"
       @click="submit_idea"
       > 
       <transition>
-       <i  v-if="show" class="fas fa-star" ></i>
+       <i  v-if="show" class="fas fa-star"  ></i>
       </transition>
-      </a>
+    </button>
 
     <a
       class="
         btn
         text-red-500
-        ml-4
+        ml-3
         mt-5
         px-3
         h-10
@@ -37,7 +37,7 @@
       @click="Delete_Idea"
       ><i class="fas fa-trash-alt" ></i
     ></a>
-  </div>
+ 
 </template>
 
 <style scoped>
@@ -59,25 +59,6 @@
     transform: scale(1);
   }
 }
-
-/* .v-enter-active {
-   animation: bounce 3s reverse infinite;
-}
-.v-leave-active {
-   animation: bounce 3s reverse infinite;
-}
-
-@keyframes bounce{
-0% { transform: scale(1); }
-60% { transform: scale(1); }
-70% { transform: scale(2.5); }
-80% { transform: scale(1); }
-90% { transform: scale(1); }
-100% { transform: scale(1); }
-} */
-
-
-
 </style>
 
 
@@ -96,6 +77,12 @@ export default {
       idea: "",
       show:true,//アニメーションフラグ
     };
+  },
+
+  computed:{
+    canStar:function(){
+      return this.Idea !== "";
+    },
   },
 
   watch: {//アイデア欄の削除ボタン

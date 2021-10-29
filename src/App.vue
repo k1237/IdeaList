@@ -22,6 +22,7 @@
       name="idea"
     ></router-view>
 
+   
     <router-view
       name="schedule"
       v-for="(idea, index) in idea_sche"
@@ -31,6 +32,7 @@
       v-on:check-event="checkAction"
       v-on:delete-event="deleteAction"
     ></router-view>
+
 
     <router-view
       name="excuted"
@@ -42,6 +44,9 @@
     ></router-view>
   </div>
 </transition>  
+
+   <div class="wrapper">
+  
 </template>
 
 <style>
@@ -72,6 +77,9 @@
     opacity: 1;
   }
 }
+
+
+
 </style>
 
 <script>
