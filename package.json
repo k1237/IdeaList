@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tailwind build css/style.css -o public/css/style.css",
-    "deploy": "gh-pages -d dist"
+    "build:vite": "vite build",
+    "deploy": "gh-pages -dist"
   },
   "dependencies": {
     "lottie-web": "^5.7.14",

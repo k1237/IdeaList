@@ -44,8 +44,6 @@
     ></router-view>
   </div>
 </transition>  
-
-   <div class="wrapper">
   
 </template>
 
