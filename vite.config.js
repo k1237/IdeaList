@@ -1,6 +1,6 @@
 
 export default {
-  base:'/IdeaList/',
+  base:'https://k1237.github.io/IdeaList/',
   // assetsDir:'./',
   // outDir: 'docs',
 }
