@@ -94,7 +94,7 @@ export default {
   data() {
     return {
       feedIn:false,
-      idea_ar: Array(6).fill(""), //アイデア用配列
+      idea_ar: Array(7).fill(""), //アイデア用配列
       idea_sche: [], //実行予定配列
       idea_excuted: [], //実行済配列
     };
