@@ -4,7 +4,7 @@
       <router-link to="/IdeaList/memo">
         <li
           id="memo"
-          class="bg-green-400 btn hover:bg-green-300"
+          class="bg-green-400 btn hover:bg-green-300 text-xs sm:text-lg"
           @click="zoomInit();zoomMemo();"
         >
           メモ帳
@@ -14,7 +14,7 @@
       <router-link to="/IdeaList">
         <li
           id="idea"
-          class="bg-indigo-700 btn hover:bg-blue-400"
+          class="bg-indigo-700 btn hover:bg-blue-400  text-xs sm:text-lg"
           @click="
             zoomInit();
             zoomIdea();
@@ -25,14 +25,14 @@
       </router-link>
 
       <router-link to="/IdeaList/schedule">
-        <li id="schedule" class="bg-yellow-400 btn hover:bg-yellow-300"
+        <li id="schedule" class="bg-yellow-400 btn hover:bg-yellow-300  text-xs sm:text-lg"
           @click="zoomInit();zoomSche();">
           実行予定
         </li>
       </router-link>
 
       <router-link to="/IdeaList/excuted">
-        <li id="excuted" class="bg-pink-400 btn hover:bg-pink-300"
+        <li id="excuted" class="bg-pink-400 btn hover:bg-pink-300  text-xs sm:text-lg"
          @click="zoomInit();zoomEx();">実行済</li>
       </router-link>
     </ul>

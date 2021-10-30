@@ -1,6 +1,6 @@
 <template >
     <input
-      class="border-blue-800 border-2 w-3/5 h-12 rounded-md my-2"
+      class="border-blue-800 border-2 w-4/6 sm:w-3/5 h-12 rounded-md my-2"
       type="text"
       @change="onChanges"
       v-model="idea"

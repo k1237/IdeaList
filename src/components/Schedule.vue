@@ -1,6 +1,6 @@
 <template>
 
-<div class="wrapper list-complete-item">
+<div class="wrapper w-11/12 sm:w-9/12 list-complete-item">
       <div class="flex justify-evenly">
       <!--変更可能にしてLSに保存するならここを修正-->
          <!-- <input

@@ -1,6 +1,6 @@
 <template>
 <transition>
-  <div class="wrapper" v-if="feedIn">
+  <div class=" wrapper w-11/12 sm:w-9/12 " v-if="feedIn">
     <Header />
     <Nav />
   </div>
@@ -8,7 +8,7 @@
 
 
 <transition>
-  <div class="wrapper text-center mb-16" v-if="feedIn">
+  <div class="wrapper w-11/12 sm:w-9/12 text-center mb-16" v-if="feedIn">
     <router-view name="memo"></router-view>
     
     <router-view
@@ -49,11 +49,13 @@
 
 <style>
 .wrapper {
-  width: 70%;
+  /* width: 70%; */
   margin: 0 auto;
   background-color: white;
   border-radius: 10px;
 }
+
+
 
 /*フェードイン*/
 .v-enter-active {
