@@ -94,7 +94,7 @@ export default {
   data() {
     return {
       feedIn:false,
-      idea_ar: Array(7).fill(""), //アイデア用配列
+      idea_ar: Array(10).fill(""), //アイデア用配列
       idea_sche: [], //実行予定配列
       idea_excuted: [], //実行済配列
     };
@@ -179,6 +179,7 @@ export default {
   mounted() {
     //更新フェードイン
     this.feedIn = true;
+    // this.idea_ar=Array(10).fill("");
   },
 };
 </script>
