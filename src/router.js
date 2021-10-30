@@ -10,7 +10,7 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/IdeaList',
       name: 'idea',
       components:{
         idea:Idea,
@@ -18,7 +18,7 @@ export const router = createRouter({
     },
 
     {
-      path: '/schedule',
+      path: '/IdeaList/schedule',
       name: 'schedule',
       components:{
         schedule:Schedule,
@@ -26,7 +26,7 @@ export const router = createRouter({
     },
 
     {
-      path: '/excuted',
+      path: '/IdeaList/excuted',
       name: 'excuted',
       components: {
         excuted:Excuted,
@@ -34,7 +34,7 @@ export const router = createRouter({
     },
 
     {
-      path: '/memo',
+      path: '/IdeaList/memo',
       name: 'memo',
       components: {
         memo:Memo,

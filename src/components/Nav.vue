@@ -1,7 +1,7 @@
 <template>
   <div class="my-16">
     <ul class="flex justify-evenly">
-      <router-link to="/memo">
+      <router-link to="/IdeaList/memo">
         <li
           id="memo"
           class="bg-green-400 btn hover:bg-green-300"
@@ -11,7 +11,7 @@
         </li>
       </router-link>
 
-      <router-link to="/">
+      <router-link to="/IdeaList">
         <li
           id="idea"
           class="bg-indigo-700 btn hover:bg-blue-400"
@@ -24,14 +24,14 @@
         </li>
       </router-link>
 
-      <router-link to="/schedule">
+      <router-link to="/IdeaList/schedule">
         <li id="schedule" class="bg-yellow-400 btn hover:bg-yellow-300"
           @click="zoomInit();zoomSche();">
           実行予定
         </li>
       </router-link>
 
-      <router-link to="/excuted">
+      <router-link to="/IdeaList/excuted">
         <li id="excuted" class="bg-pink-400 btn hover:bg-pink-300"
          @click="zoomInit();zoomEx();">実行済</li>
       </router-link>
