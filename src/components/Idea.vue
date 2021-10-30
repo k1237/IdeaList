@@ -1,4 +1,5 @@
 <template >
+
     <input
       class="border-blue-800 border-2 w-4/6 sm:w-3/5 h-12 rounded-md my-2"
       type="text"
@@ -9,7 +10,8 @@
     <button class="
         btn
         text-yellow-500
-        ml-3
+        ml-1
+        sm:ml-4
         px-3
         border-2 border-yellow-500
         hover:bg-yellow-300
@@ -27,7 +29,8 @@
       class="
         btn
         text-red-500
-        ml-3
+        ml-1
+        sm:ml-4
         mt-5
         px-3
         h-10
