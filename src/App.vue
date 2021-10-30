@@ -179,7 +179,7 @@ export default {
   mounted() {
     //更新フェードイン
     this.feedIn = true;
-    // this.idea_ar=Array(10).fill("");
+    //this.idea_ar=Array(10).fill("");
   },
 };
 </script>
