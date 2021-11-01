@@ -1,5 +1,5 @@
 <template>
-  <div class="my-16">
+  <div class="mt-8 mb-16">
     <ul class="flex justify-evenly">
       <router-link to="/IdeaList/memo">
         <li

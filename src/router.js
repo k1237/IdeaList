@@ -4,6 +4,7 @@ import Idea from './components/Idea.vue'
 import Schedule from './components/Schedule.vue'
 import Excuted from './components/Excuted.vue'
 import Memo from './components/Memo.vue'
+import Howto from './components/howto.vue'
 
 
 export const router = createRouter({
@@ -38,6 +39,14 @@ export const router = createRouter({
       name: 'memo',
       components: {
         memo:Memo,
+      }
+    },
+
+    {
+      path: '/IdeaList/howto',
+      name: 'howto',
+      components: {
+        howto:Howto,
       }
     },
   ],

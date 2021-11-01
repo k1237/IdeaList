@@ -1,12 +1,15 @@
 <template >
-
+   
     <input
-      class="border-blue-800 border-2 w-4/6 sm:w-3/5 h-12 rounded-md my-2"
+      class="border-blue-800 border-2 
+             w-8/12 sm:w-8/12 h-12 
+             rounded-md my-2 break-all"
       type="text"
       @change="onChanges"
       v-model="idea"
     />
-    
+
+    <!-- <div class="w-11/12 text-right sm:"> -->
     <button class="
         btn
         text-yellow-500
@@ -25,7 +28,7 @@
       </transition>
     </button>
 
-    <a
+    <button
       class="
         btn
         text-red-500
@@ -39,8 +42,10 @@
       "
       @click="Delete_Idea"
       ><i class="fas fa-trash-alt" ></i
-    ></a>
- 
+    ></button>
+    <!-- </div> -->
+
+
 </template>
 
 <style scoped>

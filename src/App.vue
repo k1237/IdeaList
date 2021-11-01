@@ -1,6 +1,6 @@
 <template>
 <transition>
-  <div class=" wrapper w-11/12 sm:w-9/12 " v-if="feedIn">
+  <div class=" wrapper w-full sm:w-9/12 " v-if="feedIn">
     <Header />
     <Nav />
   </div>
@@ -8,9 +8,11 @@
 
 
 <transition>
-  <div class="wrapper w-11/12 sm:w-9/12 text-center mb-16" v-if="feedIn">
+  <div class="wrapper w-full text-center mb-16 sm:w-9/12 border-0" v-if="feedIn">
     <router-view name="memo"></router-view>
     
+    <router-view name="howto"></router-view>
+
     <router-view
       v-for="(idea, index) in idea_ar"
       v-on:form-event="formAction"
