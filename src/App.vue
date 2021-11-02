@@ -44,9 +44,18 @@
       v-bind:number="index"
       v-on:excuted-delete="exdeleteAction"
     ></router-view>
+
+     <router-view name="tos"></router-view>
+     <router-view name="privacy"></router-view>
   </div>
 </transition>  
-  
+
+<transition>
+ <div class="wrapper w-full text-center mb-16 sm:w-9/12" v-if="feedIn">
+ <Footer/>
+ </div>
+</transition>  
+
 </template>
 
 <style>
@@ -87,12 +96,14 @@
 <script>
 import Header from "./components/Header.vue";
 import Nav from "./components/Nav.vue";
+import Footer from "./components/footer.vue";
 
 export default {
   name: "App",
   components: {
     Header,
     Nav,
+    Footer,
   },
 
   data() {
@@ -141,9 +152,11 @@ export default {
       this.idea_ar[number] = "";
     },
 
-    formAction(idea) {
-      //アイデア値を実行予定配列に追加
+    formAction(idea,number) {
+      //アイデア値を実行予定配列に追加後アイデア削除・新規追加
       this.idea_sche.push(idea);
+      this.idea_ar.splice(number, 1);
+      this.idea_ar.push("");
     },
 
     checkAction(idea_txt) {

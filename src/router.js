@@ -5,6 +5,8 @@ import Schedule from './components/Schedule.vue'
 import Excuted from './components/Excuted.vue'
 import Memo from './components/Memo.vue'
 import Howto from './components/howto.vue'
+import Tos from './components/tos.vue'
+import Privacy from './components/privacy.vue'
 
 
 export const router = createRouter({
@@ -47,6 +49,22 @@ export const router = createRouter({
       name: 'howto',
       components: {
         howto:Howto,
+      }
+    },
+
+    {
+      path: '/IdeaList/tos',
+      name: 'tos',
+      components: {
+        tos:Tos,
+      }
+    },
+
+    {
+      path: '/IdeaList/privacy',
+      name: 'privacy',
+      components: {
+        privacy:Privacy,
       }
     },
   ],

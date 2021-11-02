@@ -36,7 +36,7 @@
         sm:ml-4
         mt-5
         px-3
-        h-10
+        h-11
         border-2 border-red-500
         hover:bg-red-200
       "
@@ -107,11 +107,15 @@ export default {
   methods: {
     submit_idea() {
           this.show=false,//ここをfalse⇨trueにすると値が残る
-          this.$emit("form-event", this.idea)
+          
           setTimeout(() => {
           this.show = true
-          },50
-        )
+          },50);
+
+          setTimeout(() => {
+           this.$emit("form-event", this.idea,this.number)
+          }
+          ,500);
     },
 
     Delete_Idea(){
