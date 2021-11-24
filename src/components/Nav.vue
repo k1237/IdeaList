@@ -48,7 +48,7 @@ export default {
   },
 
   methods: {
-    zoomInit() {//Jquaryで省略化可能
+    zoomInit() {//定数化したい
       document.getElementById("idea").classList.remove("zoom");
       document.getElementById("memo").classList.remove("zoom");
       document.getElementById("schedule").classList.remove("zoom");
