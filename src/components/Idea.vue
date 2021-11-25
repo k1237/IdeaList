@@ -1,60 +1,64 @@
 <template >
-   
-    <input
-      class="border-blue-800 border-2 
-             w-8/12 sm:w-8/12 h-12 
-             rounded-md my-2 break-all"
-      type="text"
-      @change="onChanges"
-      v-model="idea"
-    />
+  <input
+    class="
+      border-blue-800 border-2
+      w-8/12
+      sm:w-8/12
+      h-12
+      rounded-md
+      my-2
+      break-all
+    "
+    type="text"
+    @change="onChanges"
+    v-model="data.idea"
+  />
 
-    <!-- <div class="w-11/12 text-right sm:"> -->
-    <button class="
-        btn
-        text-yellow-500
-        ml-1
-        sm:ml-4
-        px-3
-        border-2 border-yellow-500
-        hover:bg-yellow-300
-        cursor-pointer
-      "
-      v-bind:disabled="!canStar"
-      @click="submit_idea"
-      > 
-      <transition>
-       <i  v-if="show" class="fas fa-star"  ></i>
-      </transition>
-    </button>
+  <!-- <div class="w-11/12 text-right sm:"> -->
+  <button
+    class="
+      btn
+      text-yellow-500
+      ml-1
+      sm:ml-4
+      px-3
+      border-2 border-yellow-500
+      hover:bg-yellow-300
+      cursor-pointer
+    "
+    v-bind:disabled="!canStar"
+    @click="submit_idea"
+  >
+    <transition>
+      <i v-if="data.show" class="fas fa-star"></i>
+    </transition>
+  </button>
 
-    <button
-      class="
-        btn
-        text-red-500
-        ml-1
-        sm:ml-4
-        mt-5
-        px-3
-        h-11
-        border-2 border-red-500
-        hover:bg-red-200
-      "
-      @click="Delete_Idea"
-      ><i class="fas fa-trash-alt" ></i
-    ></button>
-    <!-- </div> -->
-
-
+  <button
+    class="
+      btn
+      text-red-500
+      ml-1
+      sm:ml-4
+      mt-5
+      px-3
+      h-11
+      border-2 border-red-500
+      hover:bg-red-200
+    "
+    @click="delete_idea"
+  >
+    <i class="fas fa-trash-alt"></i>
+  </button>
+  <!-- </div> -->
 </template>
 
 <style scoped>
-
 .v-enter-active {
-  animation: bounce-in .5s;
+  animation: bounce-in 0.5s;
 }
 .v-leave-active {
-  animation: bounce-in .5s reverse;
+  animation: bounce-in 0.5s reverse;
 }
 @keyframes bounce-in {
   0% {
@@ -69,62 +73,74 @@
 }
 </style>
 
+<script lang="ts">
+import { defineComponent, reactive } from "vue";
+import { toRefs, watch, computed, onMounted } from "vue";
 
-<script>
-export default {
-  
+type DataType = {
+  idea: string;
+  show: boolean;
+};
+
+type Props = {
+  Idea: string;
+  number: number;
+};
+
+export default defineComponent({
   name: "Idea",
 
-  props:{
-    Idea:String,//LSに保存した入力値
-    number:Number,
+  props: {
+    Idea: String, //LSに保存した入力値
+    number: Number,
   },
 
-  data() {
-    return {
+  setup: (props: Props, context) => {
+    //data
+    const data = reactive<DataType>({
       idea: "",
-      show:true,//アニメーションフラグ
+      show: true, //アニメーションフラグ
+    });
+
+    //watch
+    const { Idea } = toRefs(props);
+    watch(Idea, (newIdea: string) => (data.idea = newIdea));
+
+    //computed
+    const canStar = computed(() => data.idea !== "");
+
+    //mounted
+    onMounted(() => {
+      data.idea = props.Idea;
+    });
+
+    //methods
+    const submit_idea = (): void => {
+      data.show = false; //ここをfalse⇨trueにすると★が残る
+
+      setTimeout(() => {
+        data.show = true;
+      }, 50);
+
+      setTimeout(() => {
+        context.emit("form-event", data.idea, props.number);
+      }, 500);
     };
+
+    const delete_idea = (): void => {
+      context.emit("del-event", props.number);
+    };
+
+    const onChanges= (): void => {
+      context.emit("change-event", props.number,data.idea,);
+    };
+
+    return { data, canStar, submit_idea, delete_idea,onChanges};
   },
+});
 
-  computed:{
-    canStar:function(){
-      return this.Idea !== "";
-    },
-  },
-
-  watch: {//アイデア欄の削除ボタン
-      Idea:function(newIdea){
-        this.idea = newIdea;
-      }
-  },
-
-  mounted(){
-      this.idea = this.Idea //LSの値をv-modelに代入
-  },
-
-
-  methods: {
-    submit_idea() {
-          this.show=false,//ここをfalse⇨trueにすると値が残る
-          
-          setTimeout(() => {
-          this.show = true
-          },50);
-
-          setTimeout(() => {
-           this.$emit("form-event", this.idea,this.number)
-          }
-          ,500);
-    },
-
-    Delete_Idea(){
-        this.$emit("del-event",this.number)
-    },
-
-    onChanges() {//複数のフォームの値をストレージに保存するには？
-         this.$emit("change-event",this.number,this.idea)
-    },
-  },
-};
+//メモ
+// context = 従来（Options API）の this に入っていたプロパティやメソッドの一部が格納されています。
+//watchの引数はリアクティブなオブジェクトである必要があるため、props.Idea（今回はstring）は指定できない
+//特定の値をリアクティブで取り出すために、toRefsメソッドを使う
 </script>

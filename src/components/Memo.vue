@@ -22,7 +22,7 @@
 import {defineComponent,reactive,watch } from "vue";
 
 type DataType = {
-  memoText: string;
+  memoText:string;
 };
 
 export default defineComponent({
@@ -39,15 +39,15 @@ export default defineComponent({
       localStorage.setItem('memoText',data.memoText)
     );
 
-    //methods
-    const deleteAction = () => {
+    //methods(void＝値を返さないメソッド)
+    const deleteAction= ():void => {
       data.memoText = "";
     };
 
     //created(setup自体をbeforeCreated, createdとして扱うのがいいよう)
     data.memoText = localStorage.getItem("memoText")
 
-    return { data, deleteAction };
+    return {data, deleteAction };
   },
 });
 </script>
