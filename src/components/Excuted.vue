@@ -30,24 +30,31 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent} from "vue";
+
+type Props = {
+  Excuted: string;
+  number: number;
+};
+
+
+export default defineComponent({
   name: "Excuted",
   props: {
      Excuted:String,
      number:Number,
   },
 
-  data() {
-    return {
-      
-    };
+   setup: (props: Props, context) => {
+    //methods
+    const excuted_delete = (): void => {
+      context.emit("excuted-delete", props.number);
+    }
+
+    return{excuted_delete}
   },
 
-  methods:{
-    excuted_delete(){
-      this.$emit("excuted-delete", this.number);
-    }
-  }
-};
+ 
+});
 </script>
