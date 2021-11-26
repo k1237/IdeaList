@@ -12,44 +12,40 @@
   <br />
   <button
     class="bg-red-500 btn hover:bg-red-300 text-xs sm:text-lg"
-    @click="deleteAction"
+    @click="deleteMemo"
   >
     削除
   </button>
 </template>
 
 <script lang="ts">
-import {defineComponent,reactive,watch } from "vue";
+import { defineComponent, reactive, watch } from 'vue';
 
 type DataType = {
-  memoText:string;
+  memoText: string;
 };
 
 export default defineComponent({
-  name: "Memo",
+  name: 'MemoItem',
 
-  setup() {//compositionAPI改修
-    //data
+  setup() {
+    // compositionAPI改修
+    // data
     const data = reactive<DataType>({
-      memoText:"",
+      memoText: '',
     });
 
-    //watch
-    watch(data, () => 
-      localStorage.setItem('memoText',data.memoText)
-    );
-
-    //methods(void＝値を返さないメソッド)
-    const deleteAction= ():void => {
-      data.memoText = "";
+    // watch
+    watch(data, () => localStorage.setItem('memoText', data.memoText));
+    // methods(void＝値を返さないメソッド)
+    const deleteMemo = (): void => {
+      data.memoText = '';
     };
+    // created(setup自体をbeforeCreated, createdとして扱うのがいいよう)
+    data.memoText = localStorage.getItem('memoText');
 
-    //created(setup自体をbeforeCreated, createdとして扱うのがいいよう)
-    data.memoText = localStorage.getItem("memoText")
-
-    return {data, deleteAction };
+    return { data, deleteMemo };
   },
 });
+
 </script>
-
-

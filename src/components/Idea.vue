@@ -1,4 +1,4 @@
-<template >
+<template>
   <input
     class="
       border-blue-800 border-2
@@ -74,8 +74,8 @@
 </style>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-import { toRefs, watch, computed, onMounted } from "vue";
+import { defineComponent, reactive } from 'vue';
+import { toRefs, watch, computed, onMounted } from 'vue';
 
 type DataType = {
   idea: string;
@@ -88,54 +88,54 @@ type Props = {
 };
 
 export default defineComponent({
-  name: "Idea",
+  name: 'Idea',
 
   props: {
-    Idea: String, //LSに保存した入力値
+    Idea: String, // LSに保存した入力値
     number: Number,
   },
 
   setup: (props: Props, context) => {
-    //data
+    // data
     const data = reactive<DataType>({
-      idea: "",
-      show: true, //アニメーションフラグ
+      idea: '',
+      show: true, // アニメーションフラグ
     });
 
-    //watch
+    // watch
     const { Idea } = toRefs(props);
     watch(Idea, (newIdea: string) => (data.idea = newIdea));
 
-    //computed
-    const canStar = computed(() => data.idea !== "");
+    // computed
+    const canStar = computed(() => data.idea !== '');
 
-    //mounted
+    // mounted
     onMounted(() => {
       data.idea = props.Idea;
     });
 
-    //methods
+    // methods
     const submit_idea = (): void => {
-      data.show = false; //ここをfalse⇨trueにすると★が残る
+      data.show = false; // ここをfalse⇨trueにすると★が残る
 
       setTimeout(() => {
         data.show = true;
       }, 50);
 
       setTimeout(() => {
-        context.emit("form-event", data.idea, props.number);
+        context.emit('form-event', data.idea, props.number);
       }, 500);
     };
 
     const delete_idea = (): void => {
-      context.emit("del-event", props.number);
+      context.emit('del-event', props.number);
     };
 
-    const onChanges= (): void => {
-      context.emit("change-event", props.number,data.idea,);
+    const onChanges = (): void => {
+      context.emit('change-event', props.number, data.idea);
     };
 
-    return { data, canStar, submit_idea, delete_idea,onChanges};
+    return { data, canStar, submit_idea, delete_idea, onChanges };
   },
 });
 
