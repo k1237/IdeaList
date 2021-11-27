@@ -27,7 +27,7 @@
       cursor-pointer
     "
     v-bind:disabled="!canStar"
-    @click="submit_idea"
+    @click="submitIdea"
   >
     <transition>
       <i v-if="data.show" class="fas fa-star"></i>
@@ -46,7 +46,7 @@
       border-2 border-red-500
       hover:bg-red-200
     "
-    @click="delete_idea"
+    @click="deleteIdea"
   >
     <i class="fas fa-trash-alt"></i>
   </button>
@@ -74,8 +74,14 @@
 </style>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
-import { toRefs, watch, computed, onMounted } from 'vue';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  watch,
+  computed,
+  onMounted,
+} from 'vue';
 
 type DataType = {
   idea: string;
@@ -88,7 +94,7 @@ type Props = {
 };
 
 export default defineComponent({
-  name: 'Idea',
+  name: 'IdeaItem',
 
   props: {
     Idea: String, // LSに保存した入力値
@@ -104,7 +110,9 @@ export default defineComponent({
 
     // watch
     const { Idea } = toRefs(props);
-    watch(Idea, (newIdea: string) => (data.idea = newIdea));
+    watch(Idea, (newIdea: string) => {
+      data.idea = newIdea;
+    });
 
     // computed
     const canStar = computed(() => data.idea !== '');
@@ -115,7 +123,7 @@ export default defineComponent({
     });
 
     // methods
-    const submit_idea = (): void => {
+    const submitIdea = (): void => {
       data.show = false; // ここをfalse⇨trueにすると★が残る
 
       setTimeout(() => {
@@ -127,7 +135,7 @@ export default defineComponent({
       }, 500);
     };
 
-    const delete_idea = (): void => {
+    const deleteIdea = (): void => {
       context.emit('del-event', props.number);
     };
 
@@ -135,12 +143,12 @@ export default defineComponent({
       context.emit('change-event', props.number, data.idea);
     };
 
-    return { data, canStar, submit_idea, delete_idea, onChanges };
+    return { data, canStar, submitIdea, deleteIdea, onChanges };
   },
 });
 
-//メモ
+// メモ
 // context = 従来（Options API）の this に入っていたプロパティやメソッドの一部が格納されています。
-//watchの引数はリアクティブなオブジェクトである必要があるため、props.Idea（今回はstring）は指定できない
-//特定の値をリアクティブで取り出すために、toRefsメソッドを使う
+// watchの引数はリアクティブなオブジェクトである必要があるため、props.Idea（今回はstring）は指定できない
+// 特定の値をリアクティブで取り出すために、toRefsメソッドを使う
 </script>

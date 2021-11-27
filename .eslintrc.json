@@ -18,6 +18,8 @@
     ],
     "rules": {
         "linebreak-style": ["error", "windows"],
-        "vue/no-multiple-template-root": 0
-    }
+        "vue/no-multiple-template-root": 0,
+        "object-curly-newline": ["off"]
+    }  
 }
+ 

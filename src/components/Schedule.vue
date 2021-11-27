@@ -88,7 +88,7 @@
 </style>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive } from 'vue';
 
 type DataType = {
   show: boolean;
@@ -100,7 +100,7 @@ type Props = {
 };
 
 export default defineComponent({
-  name: "Schedule",
+  name: 'Schedule',
 
   props: {
     idea_txt: String,
@@ -122,13 +122,13 @@ export default defineComponent({
       }, 50);
 
       setTimeout(() => {
-        context.emit("check-event", props.idea_txt);
-        context.emit("delete-event", props.number);
+        context.emit('check-event', props.idea_txt);
+        context.emit('delete-event', props.number);
       }, 500);
     };
 
     const sche_delete = (): void => {
-      context.emit("delete-event", props.number);
+      context.emit('delete-event', props.number);
     };
 
     return { data, submit_sche, sche_delete };
