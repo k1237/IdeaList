@@ -26,7 +26,7 @@
           hover:bg-green-200
           cursor-pointer
         "
-        @click="submit_sche"
+        @click="submitSche"
       >
         <transition>
           <i v-if="data.show" class="fas fa-check"></i>
@@ -45,7 +45,7 @@
           hover:bg-red-200
           cursor-pointer
         "
-        @click="sche_delete"
+        @click="scheDelete"
       >
         <i class="fas fa-trash-alt"></i>
       </button>
@@ -100,7 +100,7 @@ type Props = {
 };
 
 export default defineComponent({
-  name: 'Schedule',
+  name: 'ScheduleItem',
 
   props: {
     idea_txt: String,
@@ -108,13 +108,13 @@ export default defineComponent({
   },
 
   setup: (props: Props, context) => {
-    //data
+    // data
     const data = reactive<DataType>({
       show: true,
     });
 
-    //methods
-    const submit_sche = (): void => {
+    // methods
+    const submitSche = (): void => {
       data.show = false;
 
       setTimeout(() => {
@@ -127,11 +127,11 @@ export default defineComponent({
       }, 500);
     };
 
-    const sche_delete = (): void => {
+    const scheDelete = (): void => {
       context.emit('delete-event', props.number);
     };
 
-    return { data, submit_sche, sche_delete };
+    return { data, submitSche, scheDelete };
   },
 });
 </script>

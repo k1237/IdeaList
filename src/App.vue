@@ -1,61 +1,60 @@
 <template>
-<transition>
-  <div class=" wrapper w-full sm:w-9/12 " v-if="feedIn">
-    <Header />
-    <Nav />
-  </div>
-</transition>  
+  <transition>
+    <div class="wrapper w-full sm:w-9/12" v-if="feedIn">
+      <Header />
+      <NavItem />
+    </div>
+  </transition>
 
+  <transition>
+    <div
+      class="wrapper w-full text-center mb-16 sm:w-9/12 border-0"
+      v-if="feedIn"
+    >
+      <router-view name="memo"></router-view>
 
-<transition>
-  <div class="wrapper w-full text-center mb-16 sm:w-9/12 border-0" v-if="feedIn">
-    <router-view name="memo"></router-view>
-    
-    <router-view name="howto"></router-view>
+      <router-view name="howto"></router-view>
 
-    <router-view
-      v-for="(idea, index) in idea_ar"
-      v-on:form-event="formAction"
-      v-on:change-event="changeAction"
-      v-bind:key="index"
-      v-bind:Idea="idea"
-      v-bind:number="index"
-      v-on:del-event="delAction"
-      name="idea"
-    ></router-view>
+      <router-view
+        v-for="(idea, index) in idea_ar"
+        v-on:form-event="formAction"
+        v-on:change-event="changeAction"
+        v-bind:key="index"
+        v-bind:Idea="idea"
+        v-bind:number="index"
+        v-on:del-event="delAction"
+        name="idea"
+      ></router-view>
 
-   
-    <router-view
-      name="schedule"
-      v-for="(idea, index) in idea_sche"
-      v-bind:key="index"
-      v-bind:idea_txt="idea"
-      v-bind:number="index"
-      v-on:check-event="checkAction"
-      v-on:delete-event="deleteAction"
-    ></router-view>
+      <router-view
+        name="schedule"
+        v-for="(idea, index) in idea_sche"
+        v-bind:key="index"
+        v-bind:idea_txt="idea"
+        v-bind:number="index"
+        v-on:check-event="checkAction"
+        v-on:delete-event="deleteAction"
+      ></router-view>
 
+      <router-view
+        name="excuted"
+        v-for="(excuted, index) in idea_excuted"
+        v-bind:key="index"
+        v-bind:Excuted="excuted"
+        v-bind:number="index"
+        v-on:excuted-delete="exdeleteAction"
+      ></router-view>
 
-    <router-view
-      name="excuted"
-      v-for="(excuted, index) in idea_excuted"
-      v-bind:key="index"
-      v-bind:Excuted="excuted"
-      v-bind:number="index"
-      v-on:excuted-delete="exdeleteAction"
-    ></router-view>
+      <router-view name="tos"></router-view>
+      <router-view name="privacy"></router-view>
+    </div>
+  </transition>
 
-     <router-view name="tos"></router-view>
-     <router-view name="privacy"></router-view>
-  </div>
-</transition>  
-
-<transition>
- <div class="wrapper w-full text-center mb-16 sm:w-9/12" v-if="feedIn">
- <Footer/>
- </div>
-</transition>  
-
+  <transition>
+    <div class="wrapper w-full text-center mb-16 sm:w-9/12" v-if="feedIn">
+      <FooterItem />
+    </div>
+  </transition>
 </template>
 
 <style>
@@ -65,8 +64,6 @@
   background-color: white;
   border-radius: 10px;
 }
-
-
 
 /*フェードイン*/
 .v-enter-active {
@@ -88,22 +85,19 @@
     opacity: 1;
   }
 }
-
-
-
 </style>
 
-<script>
-import Header from "./components/Header.vue";
-import Nav from "./components/Nav.vue";
-import Footer from "./components/footer.vue";
+<script >
+import Header from './components/Header.vue';
+import NavItem from './components/Nav.vue';
+import FooterItem from './components/footer.vue';
 
 export default {
   name: "App",
   components: {
     Header,
-    Nav,
-    Footer,
+    NavItem,
+    FooterItem,
   },
 
   data() {

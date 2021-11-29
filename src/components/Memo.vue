@@ -29,12 +29,11 @@ export default defineComponent({
   name: 'MemoItem',
 
   setup() {
-    // compositionAPI改修
     // data
     const data = reactive<DataType>({
       memoText: '',
     });
-
+  
     // watch
     watch(data, () => localStorage.setItem('memoText', data.memoText));
     // methods(void＝値を返さないメソッド)

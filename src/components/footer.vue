@@ -11,9 +11,8 @@
   <p class="mt-2">&copy; K. 2021.</p>
 </template>
 
-
 <script>
 export default {
-  name: "Footer",
+  name: 'FooterItem',
 };
 </script>

@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: "Howto",
+  name: 'HowtoItem',
 };
 </script>
