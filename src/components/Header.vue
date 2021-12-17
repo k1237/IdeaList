@@ -7,7 +7,7 @@
     <p>
       ※このアプリはローカルストレージ版です(１つの端末・ブラウザでしかデータが残らない)
     </p>
-    <p>※ログイン版も随時作成予定です(どの端末・ブラウザでもデータが残る)</p>
+    <p>※すべての端末でデータを残したい場合はこちら⇨<a href="https://idealist83.herokuapp.com/" class="underline text-blue-500">ログイン版</a></p>
 
     <div class="text-right w-11/12">
       <router-link to="/IdeaList/howto">
